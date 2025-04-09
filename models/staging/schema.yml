@@ -1,0 +1,99 @@
+version: 2
+
+sources:
+  - name: raw
+    database: BOOKSHOP
+    schema: RAW
+    quoting:
+      database: false
+      schema: false
+      identifier: true   # <<< ajouté pour forcer les guillemets
+    tables:
+      - name: books
+      - name: category
+      - name: customers
+      - name: factures
+      - name: ventes
+
+models:
+  - name: stg_books
+    description: "Nettoyage de la table books depuis RAW."
+    columns:
+      - name: id
+        description: "Identifiant unique du livre"
+      - name: category_id
+        description: "Identifiant de la catégorie"
+      - name: code
+        description: "Code du livre"
+      - name: intitule
+        description: "Nom du livre"
+      - name: isbn_10
+        description: "Code ISBN-10"
+      - name: isbn_13
+        description: "Code ISBN-13"
+      - name: created_at
+        description: "Date de création de l'entrée"
+
+  - name: stg_category
+    description: "Nettoyage de la table category depuis RAW."
+    columns:
+      - name: id
+        description: "Identifiant unique de la catégorie"
+      - name: intitule
+        description: "Nom de la catégorie"
+      - name: created_at
+        description: "Date de création de l'entrée"
+
+  - name: stg_customers
+    description: "Nettoyage de la table customers depuis RAW."
+    columns:
+      - name: id
+        description: "Identifiant unique du client"
+      - name: code
+        description: "Code client"
+      - name: first_name
+        description: "Prénom du client"
+      - name: last_name
+        description: "Nom du client"
+      - name: created_at
+        description: "Date de création de l'entrée"
+
+  - name: stg_factures
+    description: "Nettoyage et transformation de la table factures depuis RAW."
+    columns:
+      - name: id
+        description: "Identifiant de la facture"
+      - name: code
+        description: "Code de la facture"
+      - name: date_edit
+        description: "Date d'édition de la facture (format date)"
+      - name: customers_id
+        description: "Identifiant du client lié à la facture"
+      - name: qte_totale
+        description: "Quantité totale dans la facture"
+      - name: total_amount
+        description: "Montant total de la facture"
+      - name: total_paid
+        description: "Montant payé"
+      - name: created_at
+        description: "Date de création de l'entrée"
+
+  - name: stg_ventes
+    description: "Nettoyage et transformation de la table ventes depuis RAW."
+    columns:
+      - name: id
+        description: "Identifiant unique de la vente"
+      - name: code
+        description: "Code de la vente"
+      - name: date_edit
+        description: "Date d'édition de la vente (format date)"
+      - name: factures_id
+        description: "ID de la facture associée"
+      - name: books_id
+        description: "ID du livre vendu"
+      - name: pu
+        description: "Prix unitaire"
+      - name: qte
+        description: "Quantité vendue"
+      - name: created_at
+        description: "Date de création de l'entrée"
