@@ -1,0 +1,13 @@
+projet_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: WKRVFVY-KC46180
+      user: BIDDATA
+      password: "@Bigdata2025#1"
+      role: ACCOUNTADMIN
+      database: BOOKSHOP
+      warehouse: COMPUTE_WH
+      schema: RAW
+      threads: 1
