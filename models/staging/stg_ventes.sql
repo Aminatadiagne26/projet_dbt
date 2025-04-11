@@ -3,7 +3,7 @@
 SELECT
     "id",
     "code",
-    TO_DATE("date_edit", 'YYYYMMDD') AS date_edit,
+    TO_DATE("date_edit", 'YYYY-MM-DD') AS date_edit,
     "factures_id",
     "books_id",
     "pu",

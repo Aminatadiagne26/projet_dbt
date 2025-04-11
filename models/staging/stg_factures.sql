@@ -3,7 +3,7 @@
 SELECT
     "id",
     "code",
-    TO_DATE("date_edit", 'YYYYMMDD') AS date_edit,
+    TO_DATE("date_edit", 'YYYY-MM-DD') AS date_edit,
     "customers_id",
     "qte_totale",
     "total_amount",
